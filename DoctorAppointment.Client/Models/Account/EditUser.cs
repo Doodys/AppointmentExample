@@ -20,9 +20,8 @@ namespace DoctorAppointment.Client.Models.Account
 
         public EditUser(User user)
         {
-            FirstName = user.FirstName;
-            LastName = user.LastName;
-            Username = user.Username;
+            FirstName = user.Name;
+            LastName = user.Surname;
         }
     }
 }

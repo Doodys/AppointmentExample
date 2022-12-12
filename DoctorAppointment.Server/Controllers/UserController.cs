@@ -65,7 +65,7 @@ public class UserController : ControllerBase
 
     [HttpPut]
     [Route("/UpdateUser/{id}")]
-    public async Task<ActionResult<User>> PutUser([FromBody] UserDto user, int id)
+    public async Task<ActionResult<User>> PutUser(UserDto user, int id)
     {
         await _userService.UpdateById(id, user);
 

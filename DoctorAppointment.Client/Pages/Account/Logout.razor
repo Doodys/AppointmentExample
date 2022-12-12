@@ -1,0 +1,47 @@
+﻿@page "/account/logout"
+@inject IAccountService AccountService
+@inject IAlertService AlertService
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+
+<PageTitle>Logout</PageTitle>
+
+<div class="card">
+    <h4 class="card-header">Logout</h4>
+    <div class="card-body">
+        <h1>Do you really want to logout, @AccountService.User.Name?</h1>
+        <button disabled="@loading" class="btn btn-primary" @onclick="LogoutUser">
+            >
+            @if (loading)
+            {
+                <span class="spinner-border spinner-border-sm mr-1"></span>
+            }
+            Logout
+        </button>
+        <NavLink href="" class="btn btn-link">Logout</NavLink>
+    </div>
+</div>
+
+@code {
+    private bool loading;
+
+    private async void LogoutUser()
+    {
+        // reset alerts on submit
+        AlertService.Clear();
+
+        loading = true;
+        try
+        {
+            await AccountService.Logout();
+            var returnUrl = NavigationManager.QueryString("returnUrl") ?? "";
+            NavigationManager.NavigateTo(returnUrl);
+        }
+        catch (Exception ex)
+        {
+            AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

@@ -40,7 +40,7 @@ namespace DoctorAppointment.Client.Services
         {
             User = null;
             await _localStorageService.RemoveItem(_userKey);
-            _navigationManager.NavigateTo("account/login");
+            _navigationManager.NavigateTo("");
         }
 
         public async Task Register(AddUser model)
@@ -63,12 +63,11 @@ namespace DoctorAppointment.Client.Services
             await _httpService.Put($"/users/{id}", model);
 
             // update stored user if the logged in user updated their own record
-            if (id == User.Id) 
+            if (Convert.ToInt32(id) == User.Id) 
             {
                 // update local storage
-                User.FirstName = model.FirstName;
-                User.LastName = model.LastName;
-                User.Username = model.Username;
+                User.Name = model.FirstName;
+                User.Surname = model.LastName;
                 await _localStorageService.SetItem(_userKey, User);
             }
         }
@@ -78,7 +77,7 @@ namespace DoctorAppointment.Client.Services
             await _httpService.Delete($"/users/{id}");
 
             // auto logout if the logged in user deleted their own record
-            if (id == User.Id)
+            if (Convert.ToInt32(id) == User.Id)
                 await Logout();
         }
     }
