@@ -1,14 +1,42 @@
 ﻿@page "/employees/bookvisit/{Id:int}"
 @inject HttpClient Http
-@inject DialogService DialogService
-@using Radzen
-@using Radzen.Blazor
 
 <PageTitle>Employee</PageTitle>
 
 <h1>Employee @Id</h1>
 
+<RadzenCard>
+    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">DatePicker</RadzenText>
+    <RadzenDatePicker @bind-Value=@value DateFormat="d" Class="w-100" />
+</RadzenCard>
+
 @code {
     [Parameter]
     public int Id { get; set; }
+
+    DateTime? value = DateTime.Now;
+    IEnumerable<DateTime> dates = new DateTime[] { DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1) };
+
+    void DateRenderSpecial(DateRenderEventArgs args)
+    {
+        if (dates.Contains(args.Date))
+        {
+            args.Attributes.Add("style", "background-color: #ff6d41; border-color: white;");
+        }
+    }
+
+    void DateRender(DateRenderEventArgs args)
+    {
+        args.Disabled = args.Disabled || dates.Contains(args.Date);
+    }
+
+    void DateRenderNoWeekends(DateRenderEventArgs args)
+    {
+        args.Disabled = args.Disabled || args.Date.DayOfWeek == DayOfWeek.Sunday || args.Date.DayOfWeek == DayOfWeek.Saturday;
+    }
+
+    void OnTodayClick()
+    {
+        value = DateTime.Now;
+    }
 }

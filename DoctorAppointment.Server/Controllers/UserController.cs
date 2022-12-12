@@ -45,7 +45,7 @@ public class UserController : ControllerBase
     [Route("/CreateUser")]
     public async Task<ActionResult<User>> PostUser(AddUserDto user)
     {
-        await _userService.Create(user);
+        await _userService.Create(user);   
 
         _logger.LogInformation($"Added user {user.FirstName} {user.LastName}");
 
@@ -54,7 +54,7 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Route("/AuthenticateUser")]
-    public async Task<ActionResult<User>> AuthenticateUser(AuthenticateUserDto user)
+    public ActionResult<AuthenticateUserResponseDto> AuthenticateUser(AuthenticateUserDto user)
     {
         var authenticatedUser = _userService.Authenticate(user);
 

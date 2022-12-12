@@ -9,5 +9,5 @@ public class User
     public string Surname{ get; set; }
     public string Login { get; set; }
     public string Password { get; set; }
-    public UserRoleEnum Role { get; set; } = default;
+    public UserRoleEnum Role { get; set; } = UserRoleEnum.User;
 }

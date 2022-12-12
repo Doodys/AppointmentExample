@@ -27,6 +27,13 @@ public class UserService : IUserService
     public async Task Create(AddUserDto user)
     {
         var newUser = _mapper.Map<User>(user);
+
+        var userExistsCheck = await _userContext.Users
+            .FirstOrDefaultAsync(x => x.Login == newUser.Login);
+
+        if (userExistsCheck != null)
+            throw new ApplicationException($"User {newUser.Login} already exists!");
+
         await _userContext.Users!.AddAsync(newUser);
         await _userContext.SaveChangesAsync();
     }

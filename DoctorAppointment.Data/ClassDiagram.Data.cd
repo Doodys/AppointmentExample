@@ -52,7 +52,7 @@
   <Class Name="DoctorAppointment.Data.Entities.Appointment">
     <Position X="7" Y="10.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAACAAA=</HashCode>
       <FileName>Entities\Appointment.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -69,9 +69,6 @@
       <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAACAAAQAAAAAAA=</HashCode>
       <FileName>Entities\User.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Role" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="DoctorAppointment.Data.Models.Account.AddUserDto">
     <Position X="1.75" Y="11.5" Width="2.25" />
@@ -121,7 +118,7 @@
   <Enum Name="DoctorAppointment.Data.Enums.UserRoleEnum" Collapsed="true">
     <Position X="4.75" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\UserRoleEnum.cs</FileName>
     </TypeIdentifier>
   </Enum>
