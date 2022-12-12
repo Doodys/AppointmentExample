@@ -1,6 +1,7 @@
 ﻿@page "/employees/listall"
 @inject HttpClient Http
 @inject IEmployeeService EmployeeService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Employees list</PageTitle>
 
@@ -20,6 +21,7 @@ else
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Specialization</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +31,9 @@ else
                     <td>@employee.Name</td>
                     <td>@employee.Surname</td>
                     <td>@employee.Specialization</td>
+                    <td>
+                       <a href="employees/bookvisit/@employee.Id">Book</a>
+                    </td>
                 </tr>
             }
         </tbody>

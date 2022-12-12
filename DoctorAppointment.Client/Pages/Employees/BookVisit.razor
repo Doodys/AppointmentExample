@@ -1,0 +1,11 @@
+﻿@page "/employees/bookvisit/{Id:int}"
+@inject HttpClient Http
+
+<PageTitle>Employee</PageTitle>
+
+<h1>Employee @Id</h1>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}

@@ -6,12 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DoctorAppointment.Data.Services;
 
-#pragma warning disable CS8603
-
 public class EmployeeService : IEmployeeService
 {
     private readonly EmployeeContext _employeeContext;
-    private readonly IMapper _mapper;
 
     public EmployeeService(EmployeeContext employeeContext)
     {
@@ -22,6 +19,7 @@ public class EmployeeService : IEmployeeService
     public async Task<List<Employee>> GetAll()
     {
         return await _employeeContext.Employees!
+                .OrderBy(x => x.Surname)
                 .ToListAsync();
     }
 }
