@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DoctorAppointment.Data.Services.EmployeeService">
+    <Position X="3.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAAA=</HashCode>
+      <FileName>Services\EmployeeService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_employeeContext" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DoctorAppointment.Data.Services.UserService">
+    <Position X="3.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAACBAAIAACAAAEAAAgAAAACAAIA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_userContext" />
+      <Field Name="_appointmentContext" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DoctorAppointment.Data.Contexts.AppointmentContext">
+    <Position X="7.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contexts\AppointmentContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Contexts.EmployeeContext">
+    <Position X="7.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contexts\EmployeeContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Contexts.UserContext">
+    <Position X="7.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contexts\UserContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.EntityFrameworkCore.DbContext" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DoctorAppointment.Data.Entities.Appointment">
+    <Position X="7" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Appointment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Entities.Employee">
+    <Position X="7" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Entities\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Entities.User">
+    <Position X="7" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Models.Account.AddUserDto">
+    <Position X="1.75" Y="11.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
+      <FileName>Dtos\AddUserDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Dtos.AuthenticateUserDto">
+    <Position X="1.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Dtos\AuthenticateUserDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Dtos.AuthenticateUserResponseDto">
+    <Position X="1.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dtos\AuthenticateUserResponseDto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DoctorAppointment.Data.Dtos.UserDto">
+    <Position X="1.75" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dtos\UserDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DoctorAppointment.Data.Services.Interfaces.IUserService">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAACAAAEAAAgAAAACAAIA=</HashCode>
+      <FileName>Services\Interfaces\IUserService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DoctorAppointment.Data.Services.Interfaces.IEmployeeService">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IEmployeeService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DoctorAppointment.Data.Enums.UserRoleEnum" Collapsed="true">
+    <Position X="4.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\UserRoleEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
