@@ -29,7 +29,12 @@ builder.Services
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("Dev"));
     })
-    .AddTransient<IUserService, UserService>();
+    .AddDbContext<EmployeeContext>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Dev"));
+    })
+    .AddTransient<IUserService, UserService>()
+    .AddTransient<IEmployeeService, EmployeeService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

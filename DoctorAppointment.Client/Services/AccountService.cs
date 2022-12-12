@@ -1,8 +1,6 @@
 using DoctorAppointment.Client.Models;
 using DoctorAppointment.Client.Models.Account;
-using DoctorAppointment.Client.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
-using BCrypt.Net;
 
 namespace DoctorAppointment.Client.Services
 {
@@ -11,7 +9,7 @@ namespace DoctorAppointment.Client.Services
         private IHttpService _httpService;
         private NavigationManager _navigationManager;
         private ILocalStorageService _localStorageService;
-        private string _userKey = "user";
+        private readonly string _userKey = "user";
 
         public User User { get; private set; }
 
@@ -50,17 +48,17 @@ namespace DoctorAppointment.Client.Services
 
         public async Task<IList<User>> GetAll()
         {
-            return await _httpService.Get<IList<User>>("/user");
+            return await _httpService.Get<IList<User>>("/User");
         }
 
         public async Task<User> GetById(string id)
         {
-            return await _httpService.Get<User>($"/users/{id}");
+            return await _httpService.Get<User>($"/User/{id}");
         }
 
         public async Task Update(string id, EditUser model)
         {
-            await _httpService.Put($"/users/{id}", model);
+            await _httpService.Put($"/User/{id}", model);
 
             // update stored user if the logged in user updated their own record
             if (Convert.ToInt32(id) == User.Id) 

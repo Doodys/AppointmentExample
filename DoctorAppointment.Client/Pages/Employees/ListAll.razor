@@ -1,0 +1,45 @@
+﻿@page "/employees/listall"
+@inject HttpClient Http
+@inject IEmployeeService EmployeeService
+
+<PageTitle>Employees list</PageTitle>
+
+<h1>Employees list</h1>
+
+<p>Fetching data from the server.</p>
+
+@if (employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Specialization</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.Surname</td>
+                    <td>@employee.Specialization</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<Employee>? employees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = await EmployeeService.GetAll();
+    }
+}

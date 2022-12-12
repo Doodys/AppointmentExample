@@ -16,6 +16,7 @@ builder.Services
         BaseAddress = new Uri("https://localhost:7216/")
     })
     .AddScoped<IAccountService, AccountService>()
+    .AddScoped<IEmployeeService, EmployeeService>()
     .AddScoped<IAlertService, AlertService>()
     .AddScoped<IHttpService, HttpService>()
     .AddScoped<ILocalStorageService, LocalStorageService>();
