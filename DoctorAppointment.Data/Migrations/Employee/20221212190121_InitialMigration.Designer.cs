@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoctorAppointment.Data.Migrations.Employee
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20221212105039_Employees")]
-    partial class Employees
+    [Migration("20221212190121_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

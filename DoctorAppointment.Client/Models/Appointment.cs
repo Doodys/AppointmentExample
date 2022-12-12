@@ -1,4 +1,4 @@
-﻿namespace DoctorAppointment.Data.Entities;
+﻿namespace DoctorAppointment.Client.Models;
 
 public class Appointment
 {
@@ -6,4 +6,5 @@ public class Appointment
     public DateTime Date { get; set; }
     public int UserId { get; set; }
     public int EmployeeId { get; set; }
+    public string Text { get; set; }
 }

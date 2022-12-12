@@ -3,6 +3,7 @@ global using DoctorAppointment.Client.Services.Interfaces;
 global using DoctorAppointment.Client.Services;
 global using Microsoft.AspNetCore.Components.Web;
 global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -19,7 +20,11 @@ builder.Services
     .AddScoped<IEmployeeService, EmployeeService>()
     .AddScoped<IAlertService, AlertService>()
     .AddScoped<IHttpService, HttpService>()
-    .AddScoped<ILocalStorageService, LocalStorageService>();
+    .AddScoped<ILocalStorageService, LocalStorageService>()
+    .AddScoped<DialogService>()
+    .AddScoped<NotificationService>()
+    .AddScoped<TooltipService>()
+    .AddScoped<ContextMenuService>();
 
 var host = builder.Build();
 

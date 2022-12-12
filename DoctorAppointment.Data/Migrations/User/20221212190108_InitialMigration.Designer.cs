@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DoctorAppointment.Data.Migrations
+namespace DoctorAppointment.Data.Migrations.User
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20221201072548_UserRoleAdded")]
-    partial class UserRoleAdded
+    [Migration("20221212190108_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -2,17 +2,15 @@
 using DoctorAppointment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DoctorAppointment.Data.Migrations
+namespace DoctorAppointment.Data.Migrations.Employee
 {
-    [DbContext(typeof(UserContext))]
-    [Migration("20221130160904_UserContextSeparateAppointmentsFromUserTable")]
-    partial class UserContextSeparateAppointmentsFromUserTable
+    [DbContext(typeof(EmployeeContext))]
+    [Migration("20221212190122_AddTestEmployees")]
+    partial class AddTestEmployees
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +22,7 @@ namespace DoctorAppointment.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DoctorAppointment.Data.Entities.User", b =>
+            modelBuilder.Entity("DoctorAppointment.Data.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,15 +30,11 @@ namespace DoctorAppointment.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Specialization")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -50,7 +44,7 @@ namespace DoctorAppointment.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Employees");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@
 namespace DoctorAppointment.Data.Migrations.Employee
 {
     /// <inheritdoc />
-    public partial class Employees : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -3,6 +3,6 @@
 public enum UserRoleEnum
 {
     User = 0,
-    Doctor = 1,
+    Employee = 1,
     Admin = 2
 }

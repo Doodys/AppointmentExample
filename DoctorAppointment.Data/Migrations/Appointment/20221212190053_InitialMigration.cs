@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace DoctorAppointment.Data.Migrations.Appointment
 {
     /// <inheritdoc />
-    public partial class SeparateAppointmentsFromUserTable : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +16,9 @@ namespace DoctorAppointment.Data.Migrations.Appointment
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,12 +29,13 @@ namespace DoctorAppointment.Data.Migrations.Appointment
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Appointments_Employees_EmployeeId",
+                        column: x => x.UserId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointments_UserId",
-                table: "Appointments",
-                column: "UserId");
         }
 
         /// <inheritdoc />

@@ -2,12 +2,10 @@
 using DoctorAppointment.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DoctorAppointment.Data.Migrations
+namespace DoctorAppointment.Data.Migrations.User
 {
     [DbContext(typeof(UserContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
