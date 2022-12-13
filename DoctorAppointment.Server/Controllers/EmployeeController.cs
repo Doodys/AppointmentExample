@@ -21,4 +21,11 @@ public class EmployeeController : ControllerBase
     {
         return Ok(await _employeeService.GetAll());
     }
+
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<ActionResult<Employee>> GetById(int id)
+    {
+        return Ok(await _employeeService.GetById(id));
+    }
 }

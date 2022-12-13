@@ -22,4 +22,11 @@ public class EmployeeService : IEmployeeService
                 .OrderBy(x => x.Surname)
                 .ToListAsync();
     }
+
+    /// <inheritdoc/>
+    public async Task<Employee> GetById(int id)
+    {
+        return await _employeeContext.Employees!
+                .FirstOrDefaultAsync(x => x.Id == id);
+    }
 }

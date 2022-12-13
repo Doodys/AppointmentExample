@@ -15,4 +15,9 @@ public class EmployeeService : IEmployeeService
     {
         return await _httpService.Get<IList<Employee>>("/Employee");
     }
+
+    public async Task<Employee> GetById(int id)
+    {
+        return await _httpService.Get<Employee>($"/Employee/{id}");
+    }
 }

@@ -1,21 +1,42 @@
 ﻿@page "/employees/bookvisit/{Id:int}"
 @inject HttpClient Http
+@inject IEmployeeService EmployeeService
 
 <PageTitle>Employee</PageTitle>
 
-<h1>Employee @Id</h1>
+<h1>@employee.Name @employee.Surname, @employee.Specialization</h1>
 
-<RadzenCard>
-    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">DatePicker</RadzenText>
-    <RadzenDatePicker @bind-Value=@value DateFormat="d" Class="w-100" />
-</RadzenCard>
+<div class="col-md-6 p-3">
+    <RadzenCard>
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Choose date</RadzenText>
+        <RadzenDatePicker Min="DateTime.Today" @bind-Value=@value DateFormat="d" Class="w-100" />
+    </RadzenCard>
+</div>
+<div class="col-md-6 p-3">
+    <RadzenCard>
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Available hours</RadzenText>
+        <RadzenDropDown AllowClear="true" TValue="string" Class="w-100"
+        Data=@(new List<string>() {"18"})/>                       
+    </RadzenCard>
+</div>
+
+
+@*Data=@(customers.Select(c => c.CompanyName).Distinct())
+                        Change=@(args => OnChange(args, "DropDown")) />*@
 
 @code {
     [Parameter]
     public int Id { get; set; }
 
+    private Employee employee;
+
     DateTime? value = DateTime.Now;
     IEnumerable<DateTime> dates = new DateTime[] { DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1) };
+
+    protected override async Task OnInitializedAsync()
+    {
+        employee = await EmployeeService.GetById(Id);
+    }
 
     void DateRenderSpecial(DateRenderEventArgs args)
     {
