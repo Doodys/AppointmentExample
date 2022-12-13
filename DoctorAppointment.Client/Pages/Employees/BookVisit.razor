@@ -9,14 +9,15 @@
 <div class="col-md-6 p-3">
     <RadzenCard>
         <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Choose date</RadzenText>
-        <RadzenDatePicker Min="DateTime.Today" @bind-Value=@value DateFormat="d" Class="w-100" />
+        <RadzenDatePicker Min="DateTime.Today" @bind-Value=@appointment.Date DateFormat="d" Class="w-100" />
     </RadzenCard>
 </div>
 <div class="col-md-6 p-3">
     <RadzenCard>
         <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Available hours</RadzenText>
         <RadzenDropDown AllowClear="true" TValue="string" Class="w-100"
-        Data=@(new List<string>() {"18"})/>                       
+                        Data=@(availableHours)
+                        @bind-Value=@appointment.Hour/>
     </RadzenCard>
 </div>
 
@@ -29,6 +30,8 @@
     public int Id { get; set; }
 
     private Employee employee;
+    private Appointment appointment = new() { Date = DateTime.Today };
+    private List<string> availableHours = new() { "10", "12", "14", "16" };
 
     DateTime? value = DateTime.Now;
     IEnumerable<DateTime> dates = new DateTime[] { DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1) };

@@ -1,6 +1,7 @@
 ﻿@page "/employees/listall"
 @inject HttpClient Http
 @inject IEmployeeService EmployeeService
+@inject IAccountService AccountService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Employees list</PageTitle>
@@ -21,7 +22,10 @@ else
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Specialization</th>
-                <th></th>
+                @if (LoggedIn)
+                {
+                    <th></th>
+                }           
             </tr>
         </thead>
         <tbody>
@@ -31,9 +35,12 @@ else
                     <td>@employee.Name</td>
                     <td>@employee.Surname</td>
                     <td>@employee.Specialization</td>
+                    @if (LoggedIn)
+                    {
                     <td>
                        <a href="employees/bookvisit/@employee.Id">Book</a>
                     </td>
+                    }
                 </tr>
             }
         </tbody>
@@ -41,6 +48,11 @@ else
 }
 
 @code {
+    public bool LoggedIn
+    {
+        get { return AccountService.User != null; }
+    }
+
     private IList<Employee>? employees;
 
     protected override async Task OnInitializedAsync()
