@@ -8,7 +8,7 @@ public class AlertService : IAlertService
     private const string _defaultId = "default-alert";
     public event Action<Alert> OnAlert;
 
-    public void Success(string message, bool keepAfterRouteChange = false, bool autoClose = true)
+    public void Success(string message, bool keepAfterRouteChange = true, bool autoClose = false)
     {
         this.Alert(new Alert
         {
@@ -19,7 +19,7 @@ public class AlertService : IAlertService
         });
     }        
 
-    public void Error(string message, bool keepAfterRouteChange = false, bool autoClose = true)
+    public void Error(string message, bool keepAfterRouteChange = true, bool autoClose = false)
     {
         this.Alert(new Alert
         {
@@ -30,7 +30,7 @@ public class AlertService : IAlertService
         });
     }        
 
-    public void Info(string message, bool keepAfterRouteChange = false, bool autoClose = true)
+    public void Info(string message, bool keepAfterRouteChange = true, bool autoClose = false)
     {
         this.Alert(new Alert
         {
@@ -41,7 +41,7 @@ public class AlertService : IAlertService
         });
     }        
 
-    public void Warn(string message, bool keepAfterRouteChange = false, bool autoClose = true)
+    public void Warn(string message, bool keepAfterRouteChange = true, bool autoClose = false)
     {
         this.Alert(new Alert
         {

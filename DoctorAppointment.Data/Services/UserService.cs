@@ -2,6 +2,7 @@
 using DoctorAppointment.Data.Contexts;
 using DoctorAppointment.Data.Dtos;
 using DoctorAppointment.Data.Entities;
+using DoctorAppointment.Data.Helpers;
 using DoctorAppointment.Data.Models.Account;
 using DoctorAppointment.Data.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ public class UserService : IUserService
             .FirstOrDefaultAsync(x => x.Login == newUser.Login);
 
         if (userExistsCheck != null)
-            throw new ApplicationException($"User {newUser.Login} already exists!");
+            throw new AppException($"User {newUser.Login} already exists!");
 
         await _userContext.Users!.AddAsync(newUser);
         await _userContext.SaveChangesAsync();
@@ -98,7 +99,7 @@ public class UserService : IUserService
 
         if (user is null || user.Password != userDto.Password)
         {
-            throw new ApplicationException("Username or password is incorrect");
+            throw new AppException("Username or password is incorrect");
         }
 
         var response = _mapper.Map<AuthenticateUserResponseDto>(user);

@@ -4,6 +4,7 @@ global using System.Reflection;
 global using DoctorAppointment.Data.Services;
 global using DoctorAppointment.Data.Services.Interfaces;
 global using DoctorAppointment.Data.Dtos;
+global using DoctorAppointment.Data.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,8 @@ app.UseCors(x => x
         .AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader());
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 
