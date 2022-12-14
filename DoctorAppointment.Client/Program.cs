@@ -14,10 +14,11 @@ var apiUrl = builder.Configuration["apiUrl"]!;
 builder.Services
     .AddScoped(sp => new HttpClient
     {
-        BaseAddress = new Uri("https://localhost:7216/")
+        BaseAddress = new Uri(apiUrl)
     })
     .AddScoped<IAccountService, AccountService>()
     .AddScoped<IEmployeeService, EmployeeService>()
+    .AddScoped<IAppointmentService, AppointmentService>()
     .AddScoped<IAlertService, AlertService>()
     .AddScoped<IHttpService, HttpService>()
     .AddScoped<ILocalStorageService, LocalStorageService>()

@@ -35,7 +35,8 @@ builder.Services
         options.UseSqlServer(builder.Configuration.GetConnectionString("Dev"));
     })
     .AddTransient<IUserService, UserService>()
-    .AddTransient<IEmployeeService, EmployeeService>();
+    .AddTransient<IEmployeeService, EmployeeService>()
+    .AddTransient<IAppointmentService, AppointmentService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
