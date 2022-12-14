@@ -56,23 +56,9 @@ namespace Appointment.Client.Services
             return await _httpService.Get<User>($"/User/{id}");
         }
 
-        public async Task Update(string id, EditUser model)
+        public async Task Delete(int id)
         {
-            await _httpService.Put($"/User/{id}", model);
-
-            // update stored user if the logged in user updated their own record
-            if (Convert.ToInt32(id) == User.Id) 
-            {
-                // update local storage
-                User.Name = model.FirstName;
-                User.Surname = model.LastName;
-                await _localStorageService.SetItem(_userKey, User);
-            }
-        }
-
-        public async Task Delete(string id)
-        {
-            await _httpService.Delete($"/users/{id}");
+            await _httpService.Delete($"/DeleteUser/{id}");
 
             // auto logout if the logged in user deleted their own record
             if (Convert.ToInt32(id) == User.Id)

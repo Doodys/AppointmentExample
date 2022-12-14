@@ -1,0 +1,38 @@
+﻿@page "/Account/UserPanel/RemoveAccount"
+@inject IAccountService AccountService
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+
+<PageTitle>Remove account</PageTitle>
+
+<div class="card">
+    <h4 class="card-header">Remove account</h4>
+    <div class="card-body">
+        <h1>Do you really want to delete account, @AccountService.User.Name?</h1>
+        <button class="btn btn-primary" @onclick="@(async () => await DeleteAccount())">
+            Delete
+        </button>
+    </div>
+</div>
+
+@code {
+    public bool LoggedIn
+    {
+        get { return AccountService.User != null; }
+    }
+
+    public List<AppointmentEmployeeDto> appointments;
+
+    protected override void OnInitialized()
+    {
+        if (!LoggedIn)
+        {
+            NavigationManager.NavigateTo("");
+        }
+    }
+
+    private async Task DeleteAccount()
+    {
+        await AccountService.Delete(AccountService.User.Id);
+    }
+}

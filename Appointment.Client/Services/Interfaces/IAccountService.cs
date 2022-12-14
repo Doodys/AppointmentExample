@@ -12,6 +12,5 @@ public interface IAccountService
     Task Register(AddUser model);
     Task<IList<User>> GetAll();
     Task<User> GetById(string id);
-    Task Update(string id, EditUser model);
-    Task Delete(string id);
+    Task Delete(int id);
 }
