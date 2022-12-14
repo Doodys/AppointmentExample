@@ -11,7 +11,6 @@
     <div class="card-body">
         <h1>Do you really want to logout, @AccountService.User.Name?</h1>
         <button disabled="@loading" class="btn btn-primary" @onclick="LogoutUser">
-            >
             @if (loading)
             {
                 <span class="spinner-border spinner-border-sm mr-1"></span>
@@ -23,6 +22,14 @@
 
 @code {
     private bool loading;
+
+    protected override void OnInitialized()
+    {
+        if (AccountService.User == null)
+        {
+            NavigationManager.NavigateTo("");
+        }
+    }
 
     private async void LogoutUser()
     {

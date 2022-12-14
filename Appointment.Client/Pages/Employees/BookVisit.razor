@@ -53,6 +53,14 @@ else
     private DateTime? value = DateTime.Now;
     private IEnumerable<DateTime> dates = new DateTime[] { DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1) };
 
+    protected override void OnInitialized()
+    {
+        if (AccountService.User == null)
+        {
+            NavigationManager.NavigateTo("");
+        }
+    }
+
     protected override async Task OnInitializedAsync()
     {
         employee = await EmployeeService.GetById(Id);

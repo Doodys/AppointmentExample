@@ -1,0 +1,83 @@
+﻿@page "/Account/UserPanel/Appointments"
+@inject IAccountService AccountService
+@inject IAppointmentService AppointmentService
+@inject IAlertService AlertService
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+
+<PageTitle>Appointments</PageTitle>
+
+@if (appointments == null)
+{
+    <p>Fetching data from the server.</p>
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Specialization</th>
+                <th>Date</th>
+                <th>Hour</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in appointments)
+            {
+                <tr>
+                    <td>@appointment.Employee.Name</td>
+                    <td>@appointment.Employee.Surname</td>
+                    <td>@appointment.Employee.Specialization</td>
+                    <td>@appointment.Date</td>
+                    <td>@appointment.Hour</td>
+                    @if (appointment.Date > DateTime.Now )
+                    {
+                        <td><button class="btn btn-primary" @onclick="@(async () => await Remove(appointment))">Remove</button></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public bool LoggedIn
+    {
+        get { return AccountService.User != null; }
+    }
+
+    public List<AppointmentEmployeeDto> appointments;
+
+    protected override void OnInitialized()
+    {
+        if (!LoggedIn)
+        {
+            NavigationManager.NavigateTo("");
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        appointments = await AppointmentService.GetAllForUser(AccountService.User.Id);
+    }
+
+    private async Task Remove(AppointmentEmployeeDto value)
+    {
+        Models.Appointment removeAppointment = new() 
+        { 
+            Id = value.Id,
+            Date = value.Date, 
+            EmployeeId = value.EmployeeId, 
+            Hour = value.Hour, 
+            UserId = value.UserId 
+        };
+
+        await AppointmentService.Remove(removeAppointment);
+
+        NavigationManager.NavigateTo("/Account/UserPanel/Appointments");
+    }
+}

@@ -6,6 +6,9 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAgAAAAIA=</HashCode>
       <FileName>Services\EmployeeService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_employeeContext" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Appointment.Data.Services.UserService">
@@ -14,23 +17,27 @@
       <HashCode>gAAAAAAAAAAAAAAAAACBAAIAACAAAEAAAgAAAACAAIA=</HashCode>
       <FileName>Services\UserService.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_userContext" />
+      <Field Name="_appointmentContext" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DoctorAppointment.Data.Contexts.AppointmentContext">
+  <Class Name="Appointment.Data.Contexts.AppointmentContext">
     <Position X="7.25" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contexts\AppointmentContext.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoctorAppointment.Data.Contexts.EmployeeContext">
+  <Class Name="Appointment.Data.Contexts.EmployeeContext">
     <Position X="7.25" Y="4.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contexts\EmployeeContext.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoctorAppointment.Data.Contexts.UserContext">
+  <Class Name="Appointment.Data.Contexts.UserContext">
     <Position X="7.25" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -62,29 +69,35 @@
       <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAACAAAQAAAAAAA=</HashCode>
       <FileName>Entities\User.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="DoctorAppointment.Data.Models.Account.AddUserDto">
+  <Class Name="Appointment.Data.Models.Account.AddUserDto">
     <Position X="1.75" Y="11.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Dtos\AddUserDto.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoctorAppointment.Data.Dtos.AuthenticateUserDto">
+  <Class Name="Appointment.Data.Dtos.AuthenticateUserDto">
     <Position X="1.75" Y="8.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Dtos\AuthenticateUserDto.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DoctorAppointment.Data.Dtos.AuthenticateUserResponseDto">
+  <Class Name="Appointment.Data.Dtos.AuthenticateUserResponseDto">
     <Position X="1.75" Y="6.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dtos\AuthenticateUserResponseDto.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="DoctorAppointment.Data.Dtos.UserDto">
+  <Class Name="Appointment.Data.Dtos.UserDto">
     <Position X="1.75" Y="9.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAEAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>

@@ -11,6 +11,21 @@
         @if (LoggedIn)
         {
             <NavLink href="Account/Logout" class="nav-item nav-link">Logout</NavLink>
+            <NavLink class="nav-item nav-link" @onclick="()=>expandSubNav = !expandSubNav">
+                <span class="oi oi-list-rich" aria-hidden="false"></span> User Panel
+            </NavLink>
+            @if (expandSubNav)
+            {
+                <NavLink class="nav-item nav-link" href="Account/UserPanel/Appointments">
+                    <span>Appointments</span>
+                </NavLink>
+                <NavLink class="nav-item nav-link" href="Account/UserPanel/EditAccount">
+                    <span>Edit Account</span>
+                </NavLink>
+                <NavLink class="nav-item nav-link" href="Account/UserPanel/RemoveAccount">
+                    <span>Remove Account</span>
+                </NavLink>
+            }
         }
         else
         {
@@ -31,4 +46,6 @@
     {
         get { return AccountService.User != null; }
     }
+
+    private bool expandSubNav;
 }

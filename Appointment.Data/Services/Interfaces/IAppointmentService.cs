@@ -22,4 +22,11 @@ public interface IAppointmentService
     /// </summary>
     /// <param name="appointment"></param>
     Task Create(Entities.Appointment appointment);
+
+    /// <summary>
+    /// Get all appointments for user id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<List<AppointmentEmployeeDto>> GetAllForUser(int id);
 }

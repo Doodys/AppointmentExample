@@ -7,4 +7,5 @@ public interface IAppointmentService
     Task<AppointmentHoursResponse> GetAvailableHours(AppointmentHoursRequest request);
     Task Create(Models.Appointment appointment);
     Task Remove(Models.Appointment appointment);
+    Task<List<AppointmentEmployeeDto>> GetAllForUser(int id);
 }

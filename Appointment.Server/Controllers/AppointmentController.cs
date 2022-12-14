@@ -48,4 +48,11 @@ public class AppointmentController : ControllerBase
 
         return Ok();
     }
+
+    [HttpGet]
+    [Route("getForUser/{id}")]
+    public async Task<ActionResult<List<AppointmentEmployeeDto>>> GetForUser(int id)
+    {
+        return Ok(await _appointmentService.GetAllForUser(id));
+    }
 }

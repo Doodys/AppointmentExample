@@ -2,19 +2,23 @@
 using Appointment.Data.Services.Interfaces;
 using Appointment.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
-using Appointment.Data.Entities;
 using Appointment.Data.Dtos;
+using AutoMapper;
 
 namespace Appointment.Data.Services;
 
 public class AppointmentService : IAppointmentService
 {
     private readonly AppointmentContext _appointmnentContext;
+    private readonly EmployeeContext _employeeContext;
+    private readonly IMapper _mapper;
     private List<string> _availableHours = new() { "10", "12", "14", "16" };
 
-    public AppointmentService(AppointmentContext appointmnentContext)
+    public AppointmentService(AppointmentContext appointmnentContext, EmployeeContext employeeContext, IMapper mapper)
     {
         _appointmnentContext = appointmnentContext;
+        _employeeContext = employeeContext;
+        _mapper = mapper;
     }
 
     /// <inheritdoc/>
@@ -50,5 +54,37 @@ public class AppointmentService : IAppointmentService
     {
         await _appointmnentContext.Appointments!.AddAsync(appointment);
         await _appointmnentContext.SaveChangesAsync();
+    }
+
+    /// <inheritdoc/>
+    public async Task<List<AppointmentEmployeeDto>> GetAllForUser(int id)
+    {
+        var appointments = await _appointmnentContext.Appointments!
+            .Where(x => x.UserId == id)
+            .ToListAsync();
+
+        var employeeIdsForAppointments = appointments.Select(e => e.EmployeeId);
+
+        var employeesForAppointments = await _employeeContext.Employees!
+            .Where(r => employeeIdsForAppointments.Contains(r.Id))
+            .ToListAsync();
+
+        var appointmentsWithEmployeeData = new List<AppointmentEmployeeDto>();
+
+        foreach (var appointment in appointments)
+        {
+            appointmentsWithEmployeeData.Add(
+                new()
+                {
+                    EmployeeId = appointment.EmployeeId,
+                    UserId = appointment.UserId,
+                    Id = appointment.Id,
+                    Date = appointment.Date,
+                    Hour = appointment.Hour,
+                    Employee = employeesForAppointments.First(e => e.Id == appointment.EmployeeId)
+                });
+        }
+
+        return appointmentsWithEmployeeData;
     }
 }

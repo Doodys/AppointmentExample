@@ -25,4 +25,9 @@ public class AppointmentService : IAppointmentService
     {
         await _httpService.Post("/Appointment/removeAppointment", appointment);
     }
+
+    public async Task<List<AppointmentEmployeeDto>> GetAllForUser(int id)
+    {
+        return await _httpService.Get<List<AppointmentEmployeeDto>>($"/Appointment/getForUser/{id}");
+    }
 }
