@@ -11,14 +11,12 @@ public class AppointmentService : IAppointmentService
 {
     private readonly AppointmentContext _appointmnentContext;
     private readonly EmployeeContext _employeeContext;
-    private readonly IMapper _mapper;
     private List<string> _availableHours = new() { "10", "12", "14", "16" };
 
-    public AppointmentService(AppointmentContext appointmnentContext, EmployeeContext employeeContext, IMapper mapper)
+    public AppointmentService(AppointmentContext appointmnentContext, EmployeeContext employeeContext)
     {
         _appointmnentContext = appointmnentContext;
         _employeeContext = employeeContext;
-        _mapper = mapper;
     }
 
     /// <inheritdoc/>
