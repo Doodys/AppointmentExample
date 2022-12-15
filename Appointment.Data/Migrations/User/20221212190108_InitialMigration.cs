@@ -33,8 +33,8 @@ namespace Appointment.Data.Migrations.User
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Login = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Login = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

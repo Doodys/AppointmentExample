@@ -29,7 +29,7 @@ namespace Appointment.Data.Migrations.User
 
                     b.Property<string>("Login")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -37,7 +37,7 @@ namespace Appointment.Data.Migrations.User
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");

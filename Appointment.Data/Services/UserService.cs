@@ -97,7 +97,7 @@ public class UserService : IUserService
     {
         var user = _userContext.Users.SingleOrDefault(x => x.Login == userDto.Username);
 
-        if (user is null || user.Password != userDto.Password)
+        if (user is null || !BCrypt.Net.BCrypt.Verify(userDto.Password, user.Password))
         {
             throw new AppException("Username or password is incorrect");
         }

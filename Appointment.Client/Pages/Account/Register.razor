@@ -3,6 +3,7 @@
 @inject IAlertService AlertService
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
+@using BCrypt.Net;
 
 <PageTitle>Register</PageTitle>
 
@@ -54,7 +55,7 @@
         loading = true;
         try
         {
-            await AccountService.Register(model);
+            await AccountService.Register(SecureModel(model));
             var returnUrl = NavigationManager.QueryString("returnUrl") ?? "";
             NavigationManager.NavigateTo(returnUrl);
         }
@@ -65,4 +66,13 @@
             StateHasChanged();
         }
     }
+
+    private AddUser SecureModel(AddUser model)
+    => new AddUser()
+        {
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            Password = BCrypt.HashString(model.Password),
+            Username = model.Username
+        };
 }
