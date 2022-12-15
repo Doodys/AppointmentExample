@@ -50,21 +50,21 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Appointment.Data.Entities.Appointment">
-    <Position X="7" Y="10.25" Width="1.75" />
+    <Position X="9.75" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAAAAIBAAAAAAACAAA=</HashCode>
       <FileName>Entities\Appointment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Appointment.Data.Entities.Employee">
-    <Position X="7" Y="8.5" Width="1.75" />
+    <Position X="9.75" Y="8.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Entities\Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Appointment.Data.Entities.User">
-    <Position X="7" Y="6.5" Width="1.75" />
+    <Position X="9.75" Y="6.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAACAAAQAAAAAAA=</HashCode>
       <FileName>Entities\User.cs</FileName>
@@ -74,21 +74,21 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Appointment.Data.Models.Account.AddUserDto">
-    <Position X="1.75" Y="11.5" Width="2.25" />
+    <Position X="4.5" Y="11.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Dtos\AddUserDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Appointment.Data.Dtos.AuthenticateUserDto">
-    <Position X="1.75" Y="8.25" Width="2.25" />
+    <Position X="4.5" Y="8.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Dtos\AuthenticateUserDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Appointment.Data.Dtos.AuthenticateUserResponseDto">
-    <Position X="1.75" Y="6.5" Width="2.25" />
+    <Position X="4.5" Y="6.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAEAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dtos\AuthenticateUserResponseDto.cs</FileName>
@@ -98,10 +98,24 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Appointment.Data.Dtos.UserDto">
-    <Position X="1.75" Y="9.75" Width="2.25" />
+    <Position X="4.5" Y="9.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAEAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dtos\UserDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Appointment.Data.Dtos.AppointmentHoursRequestDto">
+    <Position X="1.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAACAAA=</HashCode>
+      <FileName>Dtos\AppointmentHoursRequestDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Appointment.Data.Dtos.AppointmentHoursResponseDto">
+    <Position X="1.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dtos\AppointmentHoursResponseDto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Appointment.Data.Services.Interfaces.IUserService">
@@ -119,7 +133,7 @@
     </TypeIdentifier>
   </Interface>
   <Enum Name="Appointment.Data.Enums.UserRoleEnum" Collapsed="true">
-    <Position X="4.75" Y="7" Width="1.5" />
+    <Position X="7.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\UserRoleEnum.cs</FileName>
