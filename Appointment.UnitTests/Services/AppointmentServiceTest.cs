@@ -1,7 +1,9 @@
 ﻿using Appointment.Data.Contexts;
 using Appointment.Data.Dtos;
+using Appointment.Data.Helpers;
 using Appointment.Data.Services;
 using Appointment.UnitTests.Mocks;
+using Azure.Core;
 using EntityFrameworkCoreMock;
 using FluentAssertions;
 using Moq;
@@ -83,6 +85,63 @@ public class AppointmentServiceTest
 
         // assert
         result.Hours.Should().BeEquivalentTo(_availableHours.Except(_takenHours).ToList());
+    }
+
+    [Fact]
+    public async Task CheckEmployeeAvailability_ShouldReturnError_WhenNoHoursAvailable()
+    {
+        // arrange
+        var differenceInHours = _availableHours.Except(_takenHours).ToList();
+
+        var appointmentEntities = new[]
+          {
+                new Data.Entities.Appointment {
+                    Id = 3,
+                    Date = DateTime.Today,
+                    Hour = differenceInHours[0],
+                    UserId = 1,
+                    EmployeeId = _employeeId
+                },
+                new Data.Entities.Appointment {
+                   Id = 4,
+                   Date = DateTime.Today,
+                   Hour = differenceInHours[1],
+                   UserId = 1,
+                   EmployeeId = _employeeId
+               }
+            };
+
+        await _appointmentService.Create(appointmentEntities[0]);
+        await _appointmentService.Create(appointmentEntities[1]);
+
+        var appointmentHoursRequestDto = new AppointmentHoursRequestDto()
+        {
+            EmployeeId = _employeeId,
+            Date = DateTime.Today
+        };
+
+        // act
+        var ex = await Assert.ThrowsAsync<AppException>(() => _appointmentService.CheckEmployeeAvailability(appointmentHoursRequestDto));
+
+        // assert
+        ex.Message.Should().Be($"No available hours for the date {DateTime.Today}");
+    }
+
+    [Fact]
+    public async Task CheckEmployeeAvailability_ShouldReturnFullAvailability_WhenNoAppointmentsForEmployee()
+    {
+        // arrange
+        var appointmentHoursRequestDto = new AppointmentHoursRequestDto()
+        {
+            EmployeeId = _employeeId,
+            Date = DateTime.Today.AddDays(1)
+        };
+
+        // act
+        var result = await _appointmentService.CheckEmployeeAvailability(appointmentHoursRequestDto);
+
+        // assert
+        result.Hours.Should().BeEquivalentTo(_availableHours);
     }
 
     [Fact]

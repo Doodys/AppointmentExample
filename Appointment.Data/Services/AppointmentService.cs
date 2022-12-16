@@ -3,7 +3,6 @@ using Appointment.Data.Services.Interfaces;
 using Appointment.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Appointment.Data.Dtos;
-using AutoMapper;
 
 namespace Appointment.Data.Services;
 
