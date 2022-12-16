@@ -7,6 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="coveragereport\**" />
+    <Compile Remove="TestResults\**" />
+    <EmbeddedResource Remove="coveragereport\**" />
+    <EmbeddedResource Remove="TestResults\**" />
+    <None Remove="coveragereport\**" />
+    <None Remove="TestResults\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="coverage.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="3.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -25,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Appointment.Client\Appointment.Client.csproj" />
     <ProjectReference Include="..\Appointment.Data\Appointment.Data.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,3 @@
-using Appointment.Client.Services.Interfaces;
 using Microsoft.JSInterop;
 using System.Text.Json;
 

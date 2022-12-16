@@ -11,7 +11,7 @@ namespace Appointment.Client.Services
         private ILocalStorageService _localStorageService;
         private readonly string _userKey = "user";
 
-        public User User { get; private set; }
+        public User User { get; set; }
 
         public AccountService(
             IHttpService httpService,
